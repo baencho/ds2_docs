@@ -1,0 +1,60 @@
+# 04. Classification 
+
+# Language Modeling
+
+## Interpolation 
+
+trigram이 context를 더 고려하니까 좋을 거 같은데 어떨 땐 bigram이 더 낫다
+- trigram: 정확히 겹치는 train data가 있으면 좋아질 수 있지만 정확히 동일한 context의 수가 줄어드는 건 감수해야한다. 
+- threshold 를 두고 딱 맞는 context가 충분하지 않으면 bigram을 쓰는 게 (backoff) 하는게 나을수도
+- 완전 backoff대신 trigram이랑 bigram 의 weighted average를 하자
+- 위 예시에서 backoff 는 결국 trigram의 비중을 0으로 한 것
+
+![0](image.png)
+![1](image-1.png)
+- /lambda 는 각 모델의 비중
+
+혹은 람다를 context에 맞춰서 바뀌게 할 수 있다
+![3](image-2.png)
+
+### <UNK>
+- 모르는 단어(OOV, Out of Vocabulary) 가 나왔을 때 그 확률을 대체하기 위한 것
+- 이 UNK의 확률은 빈도가 되게 적은 몇몇 단어들을 참고해서 만든다
+
+### Huge web-scale n-grams
+1. Pruning: threshold 이하의 N-gram들 버림
+
+2. Quantization: ex) 8B float -> 4/8 bits
+
+3. Huffman coding: 단어 자체를 작은 비트 단위로 바꾼다 
+- ex) love라는 단어가 자주 나오면 '01' 이런식으로 적언 bit encoding으로 변경
+
+4. Tries: prefix가 여러번 겹치면 한번만 볼 수 있게 하는 
+- ex) 'I love him', 'I love dog' 있으면 'I love' 가 겹치니까 이걸 한 번만 저장하게 한다
+
+# 05. Neural NLP Tutorial
+
+# Language Modeling: Models of P(text)
+
+언어 모델: 문장이 들어왔으면 괜찮은 거면 높은 확률, 아니면 낮은 확률을 냄
+![4](image-4.png)
+
+마치 문법을 이해하거나, morphology 같은것도 이해하고, 뭐 그렇다..
+
+
+### 언어 모델의 문제
+
+![3](image-3.png)
+
+Similar words
+- buy 랑 purchase는 동의어인데, purchase가 새로 들어오면 어떻게 처리할지 모른다 = overfitting 
+- purchase로 buy에서 입실론만큼 관찰을 나눠줘서 해결할 수도 있지만
+- 동의어인지 알면 둘의 확률을 똑같이 주면 더 잘 해결할 수 있다. 
+
+Long distance dependencies
+- tennis 와 racquet은 관계가 잇는 단어인데, 거리가 멀어서 둘 간의 연결관계가 n-gram에서는 빠질 수 있다. 
+
+분류 모델에서는..
+
+p17
+
