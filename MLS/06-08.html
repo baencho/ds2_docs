@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>06-08.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.11/katex.min.css" type="text/css">
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="%F0%9F%93%9A-06-quantization-part-ii">📚 06. Quantization Part II</h1>
+<p>Lecture 6은 <strong>Quantization Part II</strong>이고, 핵심은 “이미 배운 quantization을 실제 모델에 어떻게 적용할 것인가”야. 크게 보면 <strong>quantization granularity</strong>, <strong>activation quantization</strong>, <strong>QAT</strong>, <strong>mixed-precision quantization</strong>을 다룬다. 슬라이드의 objective도 PTQ와 세 가지 quantization granularity, QAT와 fake quantization을 이해하는 것으로 되어 있어.</p>
+<h2 id="6-2-quantization-granularity">6-2. Quantization Granularity</h2>
+<p><strong>Granularity</strong>는 quantization할 때 <strong>scale factor와 zero point를 어느 단위로 둘 것인가</strong>를 의미한다. 슬라이드에서는 per-tensor, per-channel, group/per-vector quantization을 비교한다.</p>
+<h3 id="per-tensor-quantization"><strong>Per-tensor quantization</strong></h3>
+<p>하나의 tensor 전체에 scale factor 하나를 쓰는 방식이다.</p>
+<p><img src="0610/image-10.png" alt="10"></p>
+<p>예를 들어 weight matrix 전체에 대해 하나의 $S$를 정하고,</p>
+<p>$$
+r = S(q - Z)
+$$</p>
+<p>처럼 복원한다.</p>
+<ul>
+<li>장점은 단순하고 scale 저장 overhead가 작다는 것.</li>
+<li>단점은 tensor 안의 channel별 값 범위가 많이 다르면 문제가 생긴다는 것.</li>
+</ul>
+<p>예를 들어 어떤 channel은 값 범위가 $[-2, 2]$인데, 어떤 channel은 $[-100, 100]$이라면, 전체 tensor에 하나의 scale을 쓰면 작은 범위의 channel은 거의 뭉개질 수 있다. 슬라이드에서도 per-tensor는 whole weight tensor에 single scale을 사용하고, output channel마다 weight range 차이가 크면 문제가 생긴다고 설명한다.</p>
+<h3 id="per-channel-quantization"><strong>Per-channel quantization</strong></h3>
+<p>Per-channel은 channel마다 scale factor를 따로 둔다.</p>
+<p><img src="0610/image-11.png" alt="11"></p>
+<p>즉 각 output channel마다</p>
+<p>$$
+S_0, S_1, S_2, \dots
+$$</p>
+<p>를 따로 둔다.</p>
+<p>그래서 <strong>channel마다 값 범위가 달라도 더 정확하게 표현할 수 있다.</strong> 슬라이드 예시에서도 per-channel은 각 row/channel의 max 값을 따로 잡아서 quantization error를 줄이는 방향으로 설명된다.</p>
+<p>다만 <strong>단점은 scale factor를 channel마다 저장해야 하므로 overhead가 늘어난다는 것이다.</strong> 더 세밀하게 나눌수록 accuracy는 좋아질 수 있지만, 저장해야 하는 scale이 많아진다.</p>
+<h3 id="per-vector-quantization"><strong>Per-vector quantization</strong></h3>
+<p>Per-tensor는 너무 거칠고, per-channel은 더 정확하지만 scale overhead가 있다. 그래서 중간 방식으로 <strong>group quantization</strong> 또는 <strong>per-vector quantization</strong>이 나온다.</p>
+<p><img src="0610/image.png" alt="vs-quant"></p>
+<p>예를 들어 16개 weight마다 scale을 하나 둔다면, 4-bit quantization에 4-bit scale을 16개마다 하나 추가하는 식이 된다. 슬라이드에서는 이 경우 effective bit width가</p>
+<p>$$
+4 + \frac{4}{16} = 4.25 \text{ bits}
+$$</p>
+<ul>
+<li>$\gamma$ 사이즈: 4 bit - 이건 16개 vector가 한 개 공유함 = 4/16 bit</li>
+<li>$S_q$ 사이즈: 4 bit</li>
+</ul>
+<p>가 된다고 설명한다.</p>
+<p>즉 실제 weight는 4bit지만, scale 저장 overhead까지 포함하면 평균적으로 4.25bit 정도가 되는 것이다.</p>
+<p>핵심은 이것이다.</p>
+<blockquote>
+<p>더 작은 group 단위로 scale을 잡으면 quantization error는 줄어들지만, scale 저장 overhead가 커진다.</p>
+</blockquote>
+<h3 id="group-quantization-multi-level-scaling">Group Quantization (Multi-level scaling)</h3>
+<p><img src="0610/image-1.png" alt="group_quantization"></p>
+<ul>
+<li><strong>L0 scale</strong>: 작은 group 안의 weight들을 위한 scale</li>
+<li><strong>L1 scale</strong>: 여러 L0 scale들을 다시 묶는 상위 scale</li>
+</ul>
+<p>실제 weight는 **작은 정수 $q$**로 저장하고, 복원할 때 <strong>L0 scale과 L1 scale을 둘 다 곱한다</strong>.</p>
+<h1 id="%E2%AD%90%EF%B8%8F-%EC%8B%9C%ED%97%98">⭐️ 시험</h1>
+<p><strong>&lt;표의 VSQ 행 설명&gt;</strong></p>
+<ul>
+<li>weight $q$는 INT4로 저장</li>
+<li>16개 weight마다 L0 scale이 하나 있음</li>
+<li>그런데 L0 scale도 FP16이 아니라 UINT4로 저장</li>
+<li>이 UINT4 scale들을 해석하기 위한 상위 scale, 즉 L1 scale은 channel마다 FP16으로 하나 저장</li>
+</ul>
+<p>단, 표에서는 L1 scale인 FP16도 per-channel로 저장되는데, channel이 충분히 크면 weight 하나당 overhead가 작아서 계산에서 생략하거나 작게 보는 거야.</p>
+<p><strong>&lt;MX4, MX6, MX9는 뭐야?&gt;</strong></p>
+<p>MX는 <strong>shared micro-exponent</strong> 계열의 data type이야.</p>
+<blockquote>
+<p>여러 개의 숫자가 하나의 exponent를 공유하고, 각 숫자는 작은 mantissa/sign만 따로 가진다.</p>
+</blockquote>
+<p>일반 floating point는 각 숫자가 자기만의 sign, exponent, mantissa를 가진다.</p>
+<p>예를 들어 FP16은 대략:</p>
+<pre class="hljs"><code><div>sign + exponent + mantissa
+</div></code></pre>
+<p>를 각 숫자마다 가진다.</p>
+<p>그런데 MX 방식은 group 안에서 exponent를 공유한다.</p>
+<pre class="hljs"><code><div>group shared exponent + 각 원소의 sign/mantissa
+</div></code></pre>
+<p>이렇게 하면 scale을 따로 많이 저장하지 않으면서도, 정수 quantization보다 조금 더 floating point스럽게 표현할 수 있다.</p>
+<p>&lt;<strong>MX4</strong>&gt;</p>
+<p><img src="0610/image-2.png" alt="2"></p>
+<p>$$
+3 + \frac{1}{2} + \frac{8}{16} = 4
+$$</p>
+<p>이 행은 data type이 $S1M2$라고 되어 있어.</p>
+<ul>
+<li>$S1$: sign 1bit</li>
+<li>$M2$: mantissa 2bit</li>
+</ul>
+<p>그래서 각 weight가 기본적으로 $3$bit를 쓴다.</p>
+<p>그런데 추가적으로 shared exponent 또는 scale 관련 overhead가 붙는다.</p>
+<ul>
+<li>$\frac{1}{2}$: L0 group size가 2라서, 1bit짜리 정보를 2개 원소가 공유하는 식의 overhead</li>
+<li>$\frac{8}{16}$: L1 scale이 8bit이고, 16개 단위로 공유</li>
+</ul>
+<p>그래서 총 effective bit width가 4bit가 된다.</p>
+<p>&lt;<strong>MX6</strong>&gt;</p>
+<p>$$
+5 + \frac{1}{2} + \frac{8}{16} = 6
+$$</p>
+<p>여기서는 data type이 $S1M4$라서:</p>
+<ul>
+<li>sign 1bit</li>
+<li>mantissa 4bit</li>
+</ul>
+<p>기본 weight 표현이 5bit.</p>
+<p>나머지 overhead를 더해서 6bit가 된다.</p>
+<p>&lt;<strong>MX9</strong>&gt;</p>
+<p>$$
+8 + \frac{1}{2} + \frac{8}{16} = 9
+$$</p>
+<p>여기서는 data type이 $S1M7$라서:</p>
+<ul>
+<li>sign 1bit</li>
+<li>mantissa 7bit</li>
+</ul>
+<p>기본 weight 표현이 8bit.</p>
+<p>overhead를 더하면 9bit.</p>
+<h3 id="%EB%B9%84%EA%B5%90">비교</h3>
+<p><img src="0610/image-4.png" alt="4"></p>
+<h3 id="nvfp4">NVFP4</h3>
+<p><img src="0610/image-3.png" alt="3"></p>
+<p>NVFP4는 <strong>4-bit floating point 형식</strong>으로, 값 하나를 대략 sign 1bit + exponent 2bit + mantissa 1bit로 표현한다.</p>
+<p>그런데 4bit만 쓰면 표현 범위가 너무 좁아서, <strong>16개 값마다 FP8 scale factor</strong>를 하나 붙인다.</p>
+<p>추가로 tensor 전체에 대해 <strong>FP32 scale factor</strong>를 한 번 더 곱한다.</p>
+<p>즉 복원은 대략 $r = q_{\text{NVFP4}} \times s_{\text{block}} \times s_{\text{tensor}}$ 느낌이다.</p>
+<p>핵심은 <strong>값은 4bit로 작게 저장하되, block scale + tensor scale로 정확도를 보완하는 방식</strong>이다.</p>
+<hr>
+<h2 id="6-3-activation-quantization">6-3. Activation Quantization</h2>
+<p>Weight quantization은 상대적으로 쉽다. 왜냐하면 weight는 학습이 끝나면 고정되어 있기 때문이다. 하지만 activation은 input마다 달라진다.</p>
+<p>슬라이드에서도 activation은 weight와 달리 range가 input에 따라 바뀌고, deployment 전에 activation statistics를 모아야 한다고 설명한다.</p>
+<p>즉 activation quantization의 문제는 이것이다.</p>
+<blockquote>
+<p>Runtime input이 들어오기 전에는 activation의 $r_{\min}$, $r_{\max}$를 정확히 모른다.</p>
+</blockquote>
+<p>그런데 linear quantization을 하려면 floating-point range가 필요하다.</p>
+<p>$$
+S = \frac{r_{\max} - r_{\min}}{q_{\max} - q_{\min}}
+$$</p>
+<p>이런 식으로 scale을 정해야 하기 때문이다.</p>
+<p>그래서 activation range를 추정하는 방법이 필요하다.</p>
+<h3 id="%EB%B0%A9%EB%B2%95-1-training-%EC%A4%91-ema-%EC%82%AC%EC%9A%A9">방법 1: Training 중 EMA 사용</h3>
+<p><img src="0610/image-5.png" alt="5"></p>
+<p>학습 중에는 forward를 계속 하므로 activation 값들을 볼 수 있다. 이때 observed min/max를 그대로 쓰지 않고 <strong>EMA</strong>, 즉 exponential moving average를 사용한다.</p>
+<p>슬라이드에서는 observed range를 수천 training step 동안 smoothing한다고 되어 있다. 식으로는 대략 이런 느낌이다.</p>
+<p>$$
+r_{\max}^{(t)} = \alpha r_{\max}^{(t)} + (1-\alpha) r_{\max}^{(t-1)}
+$$</p>
+<p>정확히 말하면 현재 step에서 관찰한 range와 이전까지 smooth된 range를 섞는다. 최근 값에 더 가중치를 주고, 과거 값은 점점 작게 반영하는 방식이다.</p>
+<h3 id="%EB%B0%A9%EB%B2%95-2-calibration-batch-%EC%82%AC%EC%9A%A9">방법 2: Calibration batch 사용</h3>
+<p>이미 학습된 FP32 model이 있을 때는, 몇 개의 sample batch를 넣어서 activation 통계를 구한다. 이것을 <strong>calibration</strong>이라고 한다.</p>
+<p>예를 들어 deployment 전에 대표 입력 몇 batch를 넣어보고 activation min/max를 관찰한 뒤, 그 값을 기반으로 quantization range를 정한다.</p>
+<p>여기서 중요한 점은 outlier다. activation에 아주 큰 outlier가 있으면 range를 너무 넓게 잡게 된다. 그러면 대부분의 일반적인 값들이 좁은 quantization bin에 몰려서 표현력이 떨어진다. 슬라이드에서도 outlier에 dynamic range를 많이 써버리면 representation ability가 나빠진다고 설명한다.</p>
+<p>그래서 단순히 max를 쓰지 않고, 다음 같은 기준을 사용할 수 있다.</p>
+<p>첫 번째는 min/max 평균을 쓰는 방식. 여러 sample batch의 min/max를 구하고 평균을 낸다.</p>
+<p><img src="0610/image-6.png" alt="6"></p>
+<p>두 번째는 KL divergence를 최소화하는 방식. quantize 전 distribution과 quantize 후 distribution이 최대한 비슷해지도록 clipping range를 고른다.</p>
+<p><img src="0610/image-7.png" alt="7"></p>
+<p><img src="0610/image-8.png" alt="8"></p>
+<p>세 번째는 MSE를 최소화하는 방식. 원래 activation과 quantized activation 사이의 mean-square-error가 작아지도록 clipping threshold를 찾는다.</p>
+<p><img src="0610/image-9.png" alt="9"></p>
+<hr>
+<h2 id="6-4-ptq%EC%99%80-%EA%B7%B8-%ED%95%9C%EA%B3%84">6-4. PTQ와 그 한계</h2>
+<p>지금까지 설명한 방식은 대부분 <strong>PTQ</strong>, 즉 Post-Training Quantization이다.</p>
+<p>PTQ는 이미 학습된 FP32 model을 가져와서, 추가 학습 없이 또는 아주 적은 calibration만으로 quantization하는 방식이다.</p>
+<p>장점은 빠르고 간단하다.
+단점은 작은 모델에서는 성능이 크게 떨어질 수 있다.</p>
+<p>슬라이드에서도 smaller models는 representational capacity가 작아서 PTQ에 잘 대응하지 못할 수 있다고 설명한다.</p>
+<p>그래서 등장하는 것이 QAT다.</p>
+<hr>
+<h2 id="6-5-quantization-aware-training-qat">6-5. Quantization-Aware Training, QAT</h2>
+<p>QAT는 말 그대로 <strong>quantization을 고려하면서 학습하는 것</strong>이다.</p>
+<p>PTQ는 학습이 끝난 후에 “이제 int8로 바꿔보자”에 가깝다.
+QAT는 학습 중부터 “어차피 inference 때 quantized weight/activation을 쓸 거니까, 학습할 때도 그 상황을 흉내 내자”에 가깝다.</p>
+<p>슬라이드에서는 QAT를 “train the model taking quantization into consideration”이라고 설명하고, quantization 후 accuracy loss를 줄이기 위해 quantized model을 fine-tuning한다고 설명한다.</p>
+<p>핵심 구조는 이렇다.</p>
+<p><img src="0610/image-12.png" alt="12"></p>
+<ul>
+<li>
+<p><strong>학습 중에는 full precision weight $W$를 유지한다.</strong></p>
+</li>
+<li>
+<p><strong>Forward pass에서는 quantized weight $Q(W)$를 사용한 것처럼 계산한다.</strong></p>
+</li>
+<li>
+<p><strong>Backward pass에서는 gradient를 full precision weight $W$에 누적한다.</strong></p>
+</li>
+<li>
+<p><strong>Inference 때는 quantized weight만 사용한다.</strong></p>
+</li>
+</ul>
+<p>즉 학습은 실수 기반으로 안정적으로 하고, forward에서는 quantization error를 일부러 경험하게 한다.</p>
+<p>이것을 <strong>fake quantization</strong> 또는 <strong>simulated quantization</strong>이라고 한다.</p>
+<hr>
+<h2 id="6-6-fake-quantization%EA%B3%BC-ste">6-6. Fake Quantization과 STE</h2>
+<p>문제는 quantization 함수가 discrete operation이라는 점이다.</p>
+<p>예를 들어 어떤 실수 값을 round해서 integer로 만들면, 대부분의 구간에서 derivative가 0이다. 그러면 backpropagation할 때 gradient가 흐르지 않는다.</p>
+<p>즉 그냥 quantization을 넣으면</p>
+<p>$$
+\frac{\partial Q(x)}{\partial x} = 0
+$$</p>
+<p>처럼 되어 학습이 잘 안 된다.</p>
+<p>그래서 사용하는 것이 <strong>STE</strong>, Straight-Through Estimator다.</p>
+<p><img src="0610/image-13.png" alt="13"></p>
+<ul>
+<li>
+<p>Forward에서는 quantization을 한다.</p>
+</li>
+<li>
+<p>Backward에서는 quantization을 identity function처럼 취급해서 gradient를 그냥 통과시킨다.</p>
+</li>
+</ul>
+<p>즉 실제 forward는</p>
+<p>$$
+y = Q(x)
+$$</p>
+<p>인데, backward에서는 대충</p>
+<p>$$
+\frac{\partial Q(x)}{\partial x} \approx 1
+$$</p>
+<p>로 보는 것이다.</p>
+<p>그래서 gradient가 0이 되어버리는 문제를 피한다. 슬라이드에서도 STE는 quantization을 identity function처럼 보고 gradient를 통과시킨다고 설명한다.</p>
+<p><img src="0610/image-14.png" alt="14"></p>
+<hr>
+<h2 id="6-7-modern-qat-quantizer-parameter%EB%8F%84-%ED%95%99%EC%8A%B5">6-7. Modern QAT: Quantizer Parameter도 학습</h2>
+<p>기본 QAT에서는 scale factor나 clipping range를 calibration으로 정하거나 고정한다. 그런데 modern QAT에서는 이것도 학습할 수 있다.</p>
+<p>예를 들어 activation clipping threshold $\alpha$, step size/scale $s$, offset 등을 weight와 함께 학습한다.</p>
+<p>즉 단순히 weight만 학습하는 것이 아니라,</p>
+<p>$$
+W, s, \alpha, Z
+$$</p>
+<p>같은 quantizer configuration까지 같이 최적화하는 방향이다.</p>
+<p>슬라이드에서는 PACT, LSQ, LSQ+ 같은 예시가 나온다. 이들은 clipping threshold나 scale, offset을 learnable parameter로 두는 방식이다.</p>
+<hr>
+<h2 id="6-8-mixed-precision-quantization">6-8. Mixed-Precision Quantization</h2>
+<p>마지막 주제는 <strong>mixed-precision quantization</strong>이다.</p>
+<p>일반적인 uniform quantization은 모든 layer를 똑같이 8bit, 8bit처럼 quantize한다. 예를 들어 모든 layer의 weight와 activation을 8bit로 맞춘다.</p>
+<p>하지만 모든 layer가 quantization에 똑같이 민감한 것은 아니다.</p>
+<p>어떤 layer는 4bit로 줄여도 accuracy가 거의 안 떨어지고, 어떤 layer는 4bit로 줄이면 성능이 크게 떨어질 수 있다.</p>
+<p>그래서 mixed-precision quantization은 layer마다 bit-width를 다르게 정한다.</p>
+<p><img src="0610/image-15.png" alt="15"></p>
+<p>예를 들면,</p>
+<p>$$
+\text{Layer 1: W4A5}
+$$</p>
+<p>$$
+\text{Layer 2: W6A7}
+$$</p>
+<p>$$
+\text{Layer 3: W5A4}
+$$</p>
+<p>처럼 layer별로 weight bit와 activation bit를 다르게 둔다.</p>
+<p>🟢 장점은 accuracy와 efficiency 사이의 trade-off를 더 잘 맞출 수 있다는 것이다.</p>
+<p>🔴 단점은 design space가 엄청 커진다는 것이다. 슬라이드에서는 layer마다 weight bit와 activation bit 선택지가 있으면, 각 layer당 choices가 $8 \times 8 = 64$이고, layer가 $n$개면 design space가 $64^n$이 된다고 설명한다.</p>
+<p>그래서 HAQ 같은 방법은 reinforcement learning 등을 사용해서 hardware-aware하게 bit-width policy를 찾는다.</p>
+<hr>
+<h2 id="6-9-%EC%8B%9C%ED%97%98%EA%B3%BC%EC%A0%9C-%EA%B4%80%EC%A0%90-%ED%95%B5%EC%8B%AC-%EC%A0%95%EB%A6%AC">6-9. 시험/과제 관점 핵심 정리</h2>
+<p>Lecture 6에서 꼭 잡아야 하는 건 다음이야.</p>
+<p><strong>Quantization granularity</strong>는 scale factor를 어느 단위로 둘지의 문제다. Per-tensor는 간단하지만 error가 클 수 있고, per-channel은 정확하지만 scale overhead가 있다. Group/per-vector는 그 중간이다.</p>
+<p><strong>Activation quantization</strong>은 weight보다 어렵다. Weight는 고정되어 있지만 activation은 input마다 바뀌기 때문이다. 그래서 training 중 EMA를 쓰거나, calibration batch를 넣어서 activation range를 추정한다.</p>
+<p><strong>Clipping range</strong>를 잘 정해야 한다. 너무 넓게 잡으면 대부분 값의 resolution이 떨어지고, 너무 좁게 잡으면 outlier가 많이 잘린다. KL divergence나 MSE를 기준으로 range를 고를 수 있다.</p>
+<p><strong>QAT</strong>는 quantization을 고려해서 fine-tuning하는 방법이다. Forward에서는 quantized value를 쓰는 것처럼 하고, backward에서는 full precision weight에 gradient를 누적한다.</p>
+<p><strong>STE</strong>는 quantization의 gradient가 0이 되는 문제를 피하기 위해, backward에서 quantization을 identity처럼 취급하는 방법이다.</p>
+<p><strong>Mixed precision</strong>은 모든 layer에 같은 bit를 쓰지 않고 layer별로 다른 bit-width를 주는 방식이다. 효율은 좋아질 수 있지만 search space가 커져서 자동화 기법이 필요하다.</p>
+<div style="page-break-after: always;"></div>
+<h1 id="%F0%9F%93%9A-07-quantization-for-llms">📚 07. Quantization for LLMs</h1>
+<p>Lecture 7은 <strong>LLM에서는 왜 quantization이 더 어렵고, 그걸 어떻게 해결하는가</strong>가 핵심이야. 강의 구성은 W8A8 SmoothQuant, W4A16 GPTQ/AWQ, rotation-based quantization, 4bit 이하 quantization, KV cache quantization, hardware trend로 되어 있어.</p>
+<h2 id="7-1-llm-quantization%EC%9D%B4-%EC%96%B4%EB%A0%A4%EC%9A%B4-%EC%9D%B4%EC%9C%A0">7-1. LLM Quantization이 어려운 이유</h2>
+<p>CNN에서는 <strong>W8A8 quantization</strong>이 꽤 표준처럼 쓰인다.
+여기서 W8A8은 weight도 8bit, activation도 8bit로 quantize한다는 뜻이야.</p>
+<p>그런데 LLM에서는 이게 잘 안 된다. 이유는 <strong>activation outlier</strong> 때문이다. LLM이 커질수록 특정 channel에서 activation 값이 비정상적으로 크게 튀는 현상이 생긴다. 슬라이드에서는 6.7B 이상 모델부터 activation에 systematic outlier가 나타나고, 기존 CNN식 W8A8 quantization을 그대로 적용하면 accuracy가 크게 떨어진다고 설명한다.</p>
+<p>문제는 이런 거야.</p>
+<p>Activation 대부분은 작은 값인데, 특정 channel에 엄청 큰 값이 있으면 quantization range를 그 outlier까지 포함해서 잡아야 한다. 그러면 대부분의 평범한 값들은 좁은 bin에 몰려서 정밀하게 표현되지 못한다.</p>
+<p>즉 LLM quantization의 첫 번째 핵심 문제는:</p>
+<blockquote>
+<p>weight보다 activation이 더 어렵고, 그 이유는 activation outlier 때문이다.</p>
+</blockquote>
+<hr>
+<h2 id="7-2-smoothquant-w8a8%EC%9D%84-%EA%B0%80%EB%8A%A5%ED%95%98%EA%B2%8C-%EB%A7%8C%EB%93%A4%EA%B8%B0">7-2. SmoothQuant: W8A8을 가능하게 만들기</h2>
+<p>SmoothQuant의 아이디어는 <strong>activation의 quantization 어려움을 weight 쪽으로 옮기는 것</strong>이다.</p>
+<p>LLM에서는 weight는 상대적으로 quantize하기 쉽고, activation은 outlier 때문에 어렵다. SmoothQuant는 activation의 큰 값을 줄이고, 대신 weight를 반대로 키워서 전체 linear layer의 출력은 그대로 유지한다. 슬라이드에서도 “<strong>activation을 smoothing해서 quantization error를 줄이고, activation의 어려움을 weight로 옮겨 둘 다 quantize하기 쉽게 만든다</strong>”고 설명한다.</p>
+<p><img src="0610/image-16.png" alt="16"></p>
+<p>Linear layer가 다음처럼 있다고 하자.</p>
+<p>$$
+Y = XW
+$$</p>
+<p>SmoothQuant는 channel별 scale $s$를 사용해서 다음처럼 바꾼다.</p>
+<p>$$
+Y = (X \operatorname{diag}(s)^{-1})(\operatorname{diag}(s)W)
+$$</p>
+<p>즉,</p>
+<p>$$
+\hat{X} = X \operatorname{diag}(s)^{-1}
+$$</p>
+<p>$$
+\hat{W} = \operatorname{diag}(s)W
+$$</p>
+<p>로 두면,</p>
+<p>$$
+Y = \hat{X}\hat{W}
+$$</p>
+<p>가 된다.</p>
+<p><img src="0610/image-17.png" alt="17"></p>
+<p>쉽게 말하면 activation 쪽에 튀는 channel이 있으면 그 activation을 작게 만들고, 대신 해당 weight를 크게 만든다. 결과값은 같지만 activation의 range가 덜 튀게 되므로 activation quantization이 쉬워진다.</p>
+<p>예를 들어 activation에 10배 큰 channel이 있으면,</p>
+<p>$$
+X \leftarrow 0.1X
+$$</p>
+<p>$$
+W \leftarrow 10W
+$$</p>
+<p>처럼 조정하는 느낌이다.</p>
+<p>🟢 SmoothQuant는 fine-tuning 없이도 accuracy를 잘 유지하고, inference를 빠르게 하면서 memory footprint도 줄일 수 있다고 설명된다. 특히 MT-NLG 530B 같은 큰 모델에서도 GPU 수를 절반으로 줄이면서 비슷한 latency를 유지할 수 있다고 나온다.</p>
+<p><img src="0610/image-18.png" alt="18"></p>
+<hr>
+<h2 id="7-3-w8a8-vs-w4a16-%EC%96%B8%EC%A0%9C-weight-only%EA%B0%80-%ED%95%84%EC%9A%94%ED%95%9C%EA%B0%80">7-3. W8A8 vs W4A16: 언제 weight-only가 필요한가?</h2>
+<p>W8A8은 batch decoding에는 좋다. 예를 들어 batch size가 크면 weight를 한 번 읽어와서 여러 query에 대해 많이 계산하므로, 연산량 자체가 중요해진다.</p>
+<p>그런데 local LLM처럼 <strong>single-query inference</strong>를 하면 상황이 다르다. Batch가 작으면 GPU가 연산으로 꽉 차기보다, 매 token마다 weight를 메모리에서 읽어오는 비용이 bottleneck이 된다.</p>
+<p><img src="0610/image-19.png" alt="19"></p>
+<p>그래서 이때는 activation까지 8bit로 낮추는 것보다, <strong>weight를 더 낮은 bit로 줄여서 memory access를 줄이는 것</strong>이 중요하다.</p>
+<p>이게 W4A16이다.</p>
+<p>$$
+\text{W4A16} = \text{Weight 4bit, Activation 16bit}
+$$</p>
+<p>즉 weight만 4bit로 세게 줄이고, activation은 FP16으로 둔다.</p>
+<p>정리하면:</p>
+<table>
+<thead>
+<tr>
+<th>상황</th>
+<th>좋은 방식</th>
+<th>이유</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Batch가 큼</td>
+<td>W8A8</td>
+<td>연산량이 많아서 compute 효율 중요</td>
+</tr>
+<tr>
+<td>Batch가 작음 / local inference</td>
+<td>W4A16</td>
+<td>weight memory access가 bottleneck</td>
+</tr>
+<tr>
+<td>Activation outlier가 심함</td>
+<td>W4A16 또는 SmoothQuant</td>
+<td>activation quantization이 어려움</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="7-4-gptq-quantization-error%EB%A5%BC-%EB%B3%B4%EC%83%81%ED%95%98%EB%A9%B4%EC%84%9C-weight-only-quantization">7-4. GPTQ: quantization error를 보상하면서 weight-only quantization</h2>
+<p>GPTQ는 <strong>post-training weight-only quantization</strong> 방법이다.
+핵심 아이디어는 그냥 weight를 반올림해서 quantize하지 않고, quantization하면서 생기는 error를 이후 weight들에 보상하는 것이다.</p>
+<p>일반적인 Round-To-Nearest, RTN은 단순히 가장 가까운 quantized value로 보낸다.</p>
+<p>$$
+w_q = \operatorname{round}(w)
+$$</p>
+<p>하지만 이렇게 하면 weight 하나하나의 error가 누적되어 출력이 많이 달라질 수 있다.</p>
+<h3 id="obq">OBQ</h3>
+<p><img src="0610/image-20.png" alt="20"></p>
+<p>GPTQ는 Optimal Brain Quantization, OBQ 계열 아이디어에서 출발한다. 어떤 weight를 quantize해서 error가 생기면, 아직 quantize하지 않은 weight들을 조금 수정해서 그 error를 흡수하게 한다.</p>
+<p>슬라이드에서도 GPTQ는 “<strong>quantize weights and compensate quantization error by updating to-be-quantized weights</strong>”라고 설명한다.</p>
+<p>다만 OBQ를 그대로 하면 계산량이 너무 크다.
+그래서 GPTQ는 시스템적으로 다음 최적화를 사용한다.</p>
+<ol>
+<li>Column-wise fixed order
+<ul>
+<li>row마다 quantize 순서를 따로 찾지 않고, column 순서로 고정한다.</li>
+</ul>
+</li>
+<li>Hessian inverse reuse
+<ul>
+<li>순서가 고정되어 있으니 같은 Hessian inverse 정보를 여러 row에서 재사용한다.</li>
+</ul>
+</li>
+<li>Lazy batch update
+<ul>
+<li>weight 하나 quantize할 때마다 바로 update하지 않고, 여러 개를 block으로 묶어서 한 번에 update한다.</li>
+</ul>
+</li>
+</ol>
+<p>즉 GPTQ는 한 줄로 말하면:</p>
+<blockquote>
+<p>weight를 낮은 bit로 바꾸되, quantization error가 출력에 주는 영향을 줄이도록 나머지 weight를 보정하는 PTQ 방법이다.</p>
+</blockquote>
+<hr>
+<h2 id="7-5-awq-activation-aware-weight-quantization">7-5. AWQ: Activation-aware Weight Quantization</h2>
+<p>AWQ는 이름 그대로 <strong>activation-aware weight-only quantization</strong>이다.</p>
+<p>GPTQ가 second-order/Hessian 기반으로 error를 보정하는 느낌이라면, AWQ는 “어떤 weight channel이 중요한지 activation을 보고 찾자”는 쪽이다.</p>
+<p><img src="0610/image-21.png" alt="21"></p>
+<p>AWQ의 관찰은 이거야.</p>
+<blockquote>
+<p>모든 weight가 똑같이 중요한 게 아니다. 아주 일부 salient weight channel만 잘 보존해도 perplexity가 크게 좋아진다.</p>
+</blockquote>
+<p>슬라이드에서는 중요한 1% salient weight channel을 FP16으로 유지하면 perplexity가 크게 좋아질 수 있다고 설명한다. 그런데 실제로 FP16과 INT4를 섞으면 hardware에서 효율적으로 처리하기 어렵다. 실수와 정수가 섞이면 결국 실수 연산처럼 되어버릴 수 있기 때문이다.</p>
+<p>그래서 AWQ는 중요한 channel을 진짜 FP16으로 남기는 대신, <strong>scaling</strong>을 사용한다.</p>
+<p><img src="0610/image-22.png" alt="22"></p>
+<p>중요한 channel에 scale $s &gt; 1$을 곱한다.</p>
+<p>$$
+W' = sW
+$$</p>
+<p>그리고 activation 쪽은 반대로 조정해서 전체 출력은 유지한다.</p>
+<p>왜 이게 도움이 되냐면, quantization error가 상대적으로 줄어들기 때문이다. 슬라이드에서는 scaling을 하면 Round에서 생기는 error가 $s$에 의해 줄어드는 효과가 있고, group의 maximum value가 크게 변하지 않으면 $\Delta$도 크게 변하지 않는다고 설명한다.</p>
+<p>쉽게 말하면:</p>
+<blockquote>
+<p>W 에 10 곱해서 크게 만들고 quantize 하면 소수점 덜 떨어지니까 중요 채널의 weight 를 잘 보존하고 대신에 X 에 10으로 나눠서 activation 값을 맞춰줌</p>
+</blockquote>
+<p>AWQ에서 중요한 점은 salient channel을 weight magnitude만 보고 고르지 않는다는 것이다. 슬라이드에서도 “weight magnitude가 아니라 activation distribution을 봐야 한다”고 강조한다.</p>
+<hr>
+<h2 id="7-6-rotation-based-quantization-quarot-spinquant">7-6. Rotation-based Quantization: QuaRot, SpinQuant</h2>
+<p>SmoothQuant와 AWQ는 outlier를 scale 조정으로 다루었다.
+Rotation-based quantization은 outlier를 <strong>orthogonal rotation</strong>으로 퍼뜨리는 방식이다.</p>
+<p><img src="0610/image-23.png" alt="23"></p>
+<p>핵심 아이디어는 이거야.</p>
+<p>어떤 vector에 값이 한 channel에만 너무 몰려 있으면 quantization이 어렵다.
+그런데 orthogonal rotation을 적용하면 전체 정보량은 유지하면서 값들이 여러 dimension으로 더 고르게 퍼질 수 있다.</p>
+<p>즉 outlier를 한 channel에 몰아두지 않고 분산시켜서 quantization range를 더 잘 활용하게 만든다.</p>
+<p><img src="0610/image-24.png" alt="24"></p>
+<p>수식으로 보면, 어떤 orthogonal matrix $R$에 대해</p>
+<p>$$
+RR^T = I
+$$</p>
+<p>이므로, 적절히 삽입하면 full-precision 계산 결과는 유지하면서 내부 표현만 바꿀 수 있다.</p>
+<h3 id="quarot">QuaRot</h3>
+<p>QuaRot은 rotation을 사용해서 W4A4KV4, 즉 weight, activation, KV cache까지 4bit로 가는 방향의 방법이다.</p>
+<p><img src="0610/image-25.png" alt="25"></p>
+<p>슬라이드에서는 orthogonal rotation을 모델에 삽입해서 full-precision computation은 유지하면서 quantization 전에 outlier를 재분배한다고 설명한다. 또한 Hadamard matrix를 사용한다. <strong>Hadamard matrix는 원소가 $-1$ 또는 $+1$이라서 Fast Hadamard Transform으로 빠르게 계산할 수 있다.</strong></p>
+<ul>
+<li>$O(N^2)$ -&gt; $O(N log N)$</li>
+</ul>
+<p>단점은 rotation 연산 자체도 비용이 든다는 것이다.
+$RW$ 같은 weight 쪽 rotation은 offline으로 미리 계산할 수 있으면 괜찮지만, nonlinear layer가 끼어 있으면 동적으로 계산해야 해서 부담이 생긴다.</p>
+<h3 id="spinquant">SpinQuant</h3>
+<p>SpinQuant는 “rotation matrix를 그냥 random하게 쓰지 말고, <strong>더 좋은 rotation을 학습하자”는 방법</strong>이다.</p>
+<p>슬라이드에서는 random rotation은 variance가 크고, random Hadamard rotation이 조금 낫고, learned rotation이 가장 높은 accuracy와 가장 작은 variance를 달성한다고 설명한다.</p>
+<p>즉 QuaRot은 빠른 Hadamard 기반 rotation, SpinQuant는 learned rotation이라는 느낌으로 보면 된다.</p>
+<hr>
+<h2 id="7-7-beyond-4bit-quip-aqlm-bitnet">7-7. Beyond 4bit: QuIP#, AQLM, BitNet</h2>
+<p>4bit보다 더 줄이려면 일반 scalar quantization만으로는 어렵다. 그래서 두 가지 방향이 나온다.</p>
+<h3 id="vector-quantization">Vector Quantization</h3>
+<p>Vector quantization은 weight 하나하나를 따로 quantize하는 게 아니라, 여러 weight를 묶은 vector를 codebook의 대표 vector에 매핑한다.</p>
+<p><img src="0610/image-26.png" alt="26"></p>
+<p>즉 어떤 weight group $w$가 있으면,</p>
+<p>$$
+w \rightarrow c_i
+$$</p>
+<p>여기서 $c_i$는 codebook 안의 대표 vector다.</p>
+<p>K-means quantization과 비슷한 느낌인데, scalar 값이 아니라 vector 단위로 가까운 codeword를 찾는다는 점이 다르다. 슬라이드에서는 QuIP#, AQLM이 이런 방향의 예시로 나온다.</p>
+<h3 id="bitnet">BitNet</h3>
+<p>BitNet은 아예 low-bit로 처음부터 학습하는 방향이다.</p>
+<p><img src="0610/image-27.png" alt="27"></p>
+<p>BitNet b1.58은 weight를 ternary value로 표현한다.</p>
+<p>$$
+W \in {-1, 0, +1}
+$$</p>
+<p>가능한 값이 3개라서 필요한 bit 수는</p>
+<p>$$
+\log_2 3 \approx 1.58
+$$</p>
+<p>이다.</p>
+<p>장점은 matrix multiplication이 곱셈 없이 integer addition/subtraction 중심으로 바뀔 수 있다는 것이다. 슬라이드에서는 같은 model size와 training token 조건에서 FP16 baseline과 비슷한 성능을 낼 수 있다고 설명한다.</p>
+<hr>
+<h2 id="7-8-kv-cache-quantization">7-8. KV Cache Quantization</h2>
+<p>앞에서는 weight와 activation을 quantize했다.
+그런데 LLM serving에서는 또 하나의 큰 메모리 문제가 있다. 바로 <strong>KV cache</strong>다.</p>
+<p>Autoregressive decoding에서는 이전 token들의 Key, Value를 계속 저장한다. Sequence length가 길어지고 batch size가 커질수록 KV cache는 선형적으로 커진다. 슬라이드에서도 KV cache가 batch size와 sequence length에 따라 linearly grow하고, long-context/high-throughput serving에서는 KV cache memory traffic이 inference latency를 지배할 수 있다고 설명한다.</p>
+<p><img src="0610/image-28.png" alt="28"></p>
+<p>그래서 KV cache도 quantize해야 한다.</p>
+<h3 id="kivi">KIVI</h3>
+<p>KIVI는 KV cache의 분포 특성을 보고 Key와 Value를 다르게 quantize한다.</p>
+<p><img src="0610/image-29.png" alt="29"></p>
+<p>Key cache는 특정 fixed channel에 persistent outlier가 있는 경우가 많다. 그래서 Key는 <strong>per-channel quantization</strong>을 한다.</p>
+<p>Value는 attention output이 value token들의 weighted sum이고, 몇몇 중요한 token이 output을 지배할 수 있다. 그래서 Value는 <strong>per-token quantization</strong>을 한다.</p>
+<p>정리하면:</p>
+<p>$$
+K: \text{per-channel quantization}
+$$</p>
+<p>$$
+V: \text{per-token quantization}
+$$</p>
+<p>슬라이드에서도 Key는 fixed channel outlier 때문에 per-channel, Value는 token별 중요도 때문에 per-token이라고 설명한다.</p>
+<h3 id="turboquant">TurboQuant</h3>
+<p>TurboQuant는 KV vector 자체를 잘 복원하는 것만이 목표가 아니라, <strong>attention score</strong>, 즉 inner product를 잘 보존해야 한다고 본다.</p>
+<p><img src="0610/image-30.png" alt="30"></p>
+<p>Attention에서는 결국</p>
+<p>$$
+QK^T
+$$</p>
+<p>가 중요하다. 따라서 KV quantization은 단순히 $K$, $V$의 MSE를 줄이는 것보다, attention score가 안 망가지게 하는 것이 중요하다.</p>
+<p>TurboQuant는 두 단계로 설명된다.</p>
+<p>첫째, random rotation과 MSE-oriented quantizer로 각 KV vector를 압축한다.</p>
+<p>둘째, residual을 1-bit QJL sketch로 저장해서 attention inner-product bias를 보정한다.</p>
+<p>즉 quantization 후 생기는 오차를 전부 float으로 저장하면 quantization 의미가 없으니, 오차의 방향성 같은 최소한의 정보를 1bit로 저장해 보정하는 방식이다.</p>
+<hr>
+<h2 id="7-9-%EC%A0%84%EC%B2%B4-%EB%B9%84%EA%B5%90">7-9. 전체 비교</h2>
+<table>
+<thead>
+<tr>
+<th>방법</th>
+<th>대상</th>
+<th>핵심 아이디어</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SmoothQuant</td>
+<td>W8A8</td>
+<td>activation outlier를 weight 쪽으로 옮김</td>
+</tr>
+<tr>
+<td>GPTQ</td>
+<td>W4A16 weight-only</td>
+<td>quantization error를 남은 weight에 보상</td>
+</tr>
+<tr>
+<td>AWQ</td>
+<td>W4A16 weight-only</td>
+<td>activation을 보고 중요한 weight channel 보호</td>
+</tr>
+<tr>
+<td>QuaRot</td>
+<td>W4A4KV4</td>
+<td>rotation으로 outlier를 분산</td>
+</tr>
+<tr>
+<td>SpinQuant</td>
+<td>W4A4</td>
+<td>좋은 rotation matrix를 학습</td>
+</tr>
+<tr>
+<td>QuIP# / AQLM</td>
+<td>4bit 이하</td>
+<td>vector를 codebook으로 quantize</td>
+</tr>
+<tr>
+<td>BitNet</td>
+<td>1.58bit weight</td>
+<td>처음부터 ternary weight로 학습</td>
+</tr>
+<tr>
+<td>KIVI</td>
+<td>KV cache</td>
+<td>Key는 per-channel, Value는 per-token</td>
+</tr>
+<tr>
+<td>TurboQuant</td>
+<td>KV cache</td>
+<td>inner product 보존 + residual correction</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="7-10-%EC%8B%9C%ED%97%98%EA%B3%BC%EC%A0%9C-%EA%B4%80%EC%A0%90-%ED%95%B5%EC%8B%AC-%EC%A0%95%EB%A6%AC">7-10. 시험/과제 관점 핵심 정리</h2>
+<p>Lecture 7에서 가장 중요한 문장은 이거야.</p>
+<blockquote>
+<p>LLM quantization은 activation outlier와 KV cache 때문에 일반 CNN quantization보다 어렵다.</p>
+</blockquote>
+<p>SmoothQuant는 activation outlier를 weight 쪽으로 옮겨서 W8A8을 가능하게 한다.</p>
+<p>GPTQ는 weight-only quantization에서 quantization error를 보상한다.</p>
+<p>AWQ는 activation distribution을 보고 중요한 weight channel을 보호한다.</p>
+<p>Rotation-based quantization은 outlier를 rotation으로 분산시켜 W4A4 같은 더 aggressive한 quantization을 가능하게 한다.</p>
+<p>KV cache quantization은 long-context serving에서 중요하고, KIVI는 Key와 Value의 분포 차이에 맞춰 서로 다른 granularity를 사용한다.</p>
+<p>한 줄 요약하면:</p>
+<blockquote>
+<p>Lecture 7은 “LLM에서는 activation outlier와 KV cache가 문제라서, SmoothQuant, GPTQ, AWQ, rotation, KV quantization 같은 LLM 전용 quantization 기법이 필요하다”는 내용이다.</p>
+</blockquote>
+<div style="page-break-after: always;"></div>
+<h1 id="%F0%9F%93%9A-08-knowledge-distillation">📚 08. Knowledge Distillation</h1>
+<p>Lecture 8은 <strong>Knowledge Distillation, 지식 증류</strong>야. 핵심은 <strong>큰 teacher model이 가진 지식을 작은 student model이 배우도록 loss를 추가하는 방법</strong>이다. 강의 전체 agenda도 “무엇을 match할 것인가”, “KD의 종류”, “task별 distillation”, “network augmentation”으로 구성되어 있어.</p>
+<h2 id="8-1-%EC%99%9C-knowledge-distillation%EC%9D%B4-%ED%95%84%EC%9A%94%ED%95%9C%EA%B0%80">8-1. 왜 Knowledge Distillation이 필요한가?</h2>
+<p>작은 edge device에서는 메모리와 연산 자원이 부족해서 큰 모델을 그대로 쓰기 어렵다. 슬라이드에서는 Cloud AI는 ResNet, ViT-Large 같은 큰 모델을 쓸 수 있지만, Tiny AI는 MCUNet, MobileNetV2-Tiny처럼 작은 모델을 써야 한다고 설명한다.</p>
+<p>문제는 작은 모델은 학습이 어렵고 성능이 낮기 쉽다는 것이다. 슬라이드에서도 tiny model은 큰 dataset에서 underfit하기 쉽다고 설명한다.</p>
+<p>그래서 아이디어는 이거야.</p>
+<blockquote>
+<p>이미 잘 학습된 큰 모델이 있으면, 작은 모델이 그 큰 모델의 “푸는 방식”을 따라 배우게 하자.</p>
+</blockquote>
+<p>여기서 큰 모델이 <strong>teacher</strong>, 작은 모델이 <strong>student</strong>다.</p>
+<hr>
+<h2 id="8-2-knowledge-distillation%EC%9D%98-%EA%B8%B0%EB%B3%B8-%EA%B0%9C%EB%85%90">8-2. Knowledge Distillation의 기본 개념</h2>
+<p>일반적인 학습은 정답 label만 보고 학습한다.</p>
+<p><img src="0610/image-31.png" alt="31"></p>
+<p>예를 들어 고양이 사진이면 label은 “cat”이다. 그러면 student는 cat을 맞히도록 cross entropy loss로 학습한다.</p>
+<p>하지만 KD에서는 teacher의 출력도 같이 본다.</p>
+<p>즉 student의 loss는 보통 이런 구조가 된다.</p>
+<p>$$
+L = L_{CE}(y, p_s) + \lambda L_{KD}(p_t, p_s)
+$$</p>
+<p>여기서</p>
+<ul>
+<li>$y$: 정답 label</li>
+<li>$p_s$: student prediction</li>
+<li>$p_t$: teacher prediction</li>
+<li>$L_{CE}$: 정답을 맞히는 loss</li>
+<li>$L_{KD}$: teacher와 student를 비슷하게 만드는 loss</li>
+</ul>
+<p>슬라이드에도 원래는 classification loss만 있었지만, 이제 distillation loss를 추가해서 loss를 구성한다고 설명되어 있어. 즉 KD는 결국 <strong>loss 함수를 바꾸는 것</strong>이라고 보면 된다.</p>
+<hr>
+<h2 id="8-3-output-logits--probability%EB%A5%BC-%EB%A7%9E%EC%B6%94%EB%8A%94-%EA%B8%B0%EB%B3%B8-kd">8-3. Output Logits / Probability를 맞추는 기본 KD</h2>
+<p>가장 기본적인 KD는 teacher와 student의 <strong>output probability distribution</strong>을 맞추는 것이다. 슬라이드에서도 teacher와 student의 prediction probabilities를 match하는 것이 기본 intuition이라고 나온다.</p>
+<p><img src="0610/image-32.png" alt="32"></p>
+<p>예를 들어 teacher가 이렇게 예측했다고 하자.</p>
+<p>$$
+p_t(\text{cat}) = 0.982
+$$</p>
+<p>$$
+p_t(\text{dog}) = 0.017
+$$</p>
+<p>student는 이렇게 예측했다.</p>
+<p>$$
+p_s(\text{cat}) = 0.731
+$$</p>
+<p>$$
+p_s(\text{dog}) = 0.269
+$$</p>
+<p>둘 다 cat을 맞혔으니까 classification만 보면 둘 다 맞은 것이다.
+하지만 teacher는 훨씬 확신 있게 cat이라고 말하고, student는 덜 확신한다.</p>
+<p>KD는 단순히 정답 class만 배우는 것이 아니라,</p>
+<blockquote>
+<p>teacher가 각 class를 얼마나 그럴듯하게 보는지까지 배운다.</p>
+</blockquote>
+<p>이걸 <strong>soft label</strong>이라고 보면 된다.</p>
+<hr>
+<h2 id="8-4-temperature">8-4. Temperature</h2>
+<p>KD에서 중요한 개념이 <strong>temperature</strong>다. Temperature는 softmax를 부드럽게 만드는 값이다. 슬라이드에서도 temperature는 output probability distribution을 smooth하게 만든다고 설명한다.</p>
+<p><img src="0610/image-33.png" alt="33"></p>
+<p>일반 softmax는</p>
+<p>$$
+p_i = \frac{\exp(z_i)}{\sum_j \exp(z_j)}
+$$</p>
+<p>인데, temperature $T$를 넣으면</p>
+<p>$$
+p_i(T) = \frac{\exp(z_i / T)}{\sum_j \exp(z_j / T)}
+$$</p>
+<p>가 된다.</p>
+<p>$T=1$이면 일반 softmax고, $T$가 커지면 확률분포가 더 부드러워진다.</p>
+<p>예를 들어 teacher logit이 cat $5$, dog $1$이면 $T=1$에서는 cat 확률이 거의 $0.982$로 매우 크다. 그런데 $T=10$을 쓰면 cat $0.599$, dog $0.401$처럼 더 부드러운 분포가 된다. 슬라이드에도 이 예시가 나온다.</p>
+<p>왜 부드럽게 만들까?</p>
+<p>정답이 cat이라고 해도 dog가 얼마나 비슷한 후보인지, bird는 얼마나 아닌지 같은 <strong>class 간 관계 정보</strong>가 더 잘 드러나기 때문이다.</p>
+<hr>
+<h2 id="8-5-%EB%AC%B4%EC%97%87%EC%9D%84-match%ED%95%A0-%EA%B2%83%EC%9D%B8%EA%B0%80">8-5. 무엇을 Match할 것인가?</h2>
+<p>Lecture 8의 핵심은 “teacher의 무엇을 student가 따라 할 것인가?”야. 슬라이드에서는 output logits, intermediate weights, intermediate features, gradients, sparsity patterns, relational information을 다룬다.</p>
+<h3 id="8-5-1-output-logits">8-5-1. Output Logits</h3>
+<p>가장 기본은 teacher와 student의 최종 logits/probabilities를 맞추는 것이다.</p>
+<p><img src="0610/image-34.png" alt="34"></p>
+<p>$$
+L_{KD} = D(p_t, p_s)
+$$</p>
+<p>여기서 $D$는 KL divergence, cross entropy, MSE 등이 될 수 있다.</p>
+<p>이 방식은 간단하지만, teacher의 중간 reasoning 과정은 직접 배우지 않는다.</p>
+<hr>
+<h3 id="8-5-2-intermediate-weights--hidden-layers">8-5-2. Intermediate Weights / Hidden Layers</h3>
+<p>두 번째는 중간 layer의 표현을 맞추는 것이다.</p>
+<p>Teacher와 student는 구조가 다를 수 있다. 예를 들어 teacher는 20층, student는 5층이면 layer를 1:1로 맞추기 어렵다. 그래서 중간 layer를 선택하고, 필요하면 linear transformation을 붙여 dimension을 맞춘다. 슬라이드에서도 intermediate hidden layer 사이에 L2 loss를 추가하고, dimensionality를 맞추기 위해 linear transformation을 적용한다고 설명한다.</p>
+<p><img src="0610/image-35.png" alt="35"></p>
+<p>예를 들어 teacher feature가 $h_t$, student feature가 $h_s$라면,</p>
+<p>$$
+L_{hint} = | h_t - g(h_s) |_2^2
+$$</p>
+<p>처럼 쓸 수 있다.</p>
+<p>여기서 $g$는 student feature의 dimension을 teacher에 맞추는 projection layer다.</p>
+<hr>
+<h3 id="8-5-3-intermediate-features">8-5-3. Intermediate Features</h3>
+<p>Intermediate feature distillation은 teacher와 student가 최종 output뿐 아니라 <strong>중간 feature map의 분포</strong>도 비슷하게 만들자는 것이다. 슬라이드에서도 “teacher와 student는 output probability뿐 아니라 feature distribution도 비슷해야 한다”고 설명한다.</p>
+<p><img src="0610/image-36.png" alt="36"></p>
+<p>CNN으로 보면 teacher가 어떤 layer에서 edge, texture, object part 등을 어떻게 표현하는지 student도 비슷하게 배우게 하는 것이다.</p>
+<p>이때도 feature map 크기나 channel 수가 다를 수 있어서 resize나 projection이 필요하다.</p>
+<hr>
+<h3 id="8-5-4-gradients--attention-map">8-5-4. Gradients / Attention Map</h3>
+<p>Teacher가 “어디를 보고 판단했는지”를 student가 따라 하게 만들 수도 있다.</p>
+<p>슬라이드에서는 CNN feature map $x$에 대한 attention을</p>
+<p>$$
+\frac{\partial L}{\partial x}
+$$</p>
+<p>로 정의한다. 만약 어떤 위치 $(i,j)$에서 gradient가 크면, 그 위치를 조금만 바꿔도 output이 크게 바뀐다는 뜻이다. 즉 모델이 그 위치에 attention을 많이 두고 있다는 의미다.</p>
+<p>그래서 student의 attention map이 teacher의 attention map과 비슷해지도록 loss를 추가할 수 있다.</p>
+<p><img src="0610/image-37.png" alt="37"></p>
+<p>이건 네가 전에 과제에서 봤던 <strong>Attention Transfer</strong>랑 연결되는 부분이야.</p>
+<hr>
+<h3 id="8-5-5-sparsity-patterns">8-5-5. Sparsity Patterns</h3>
+<p>ReLU 이후에는 activation이 0이 되는 위치와 살아남는 위치가 생긴다.</p>
+<p>Teacher와 student가 정확한 activation 값을 맞추기는 어려울 수 있지만,</p>
+<blockquote>
+<p>어떤 neuron/channel이 켜지고 꺼지는지의 pattern은 비슷하게 만들 수 있지 않을까?</p>
+</blockquote>
+<p>라는 아이디어가 sparsity pattern distillation이다.</p>
+<p><img src="0610/image-38.png" alt="38"></p>
+<p>슬라이드에서도 teacher와 student는 ReLU activation 이후 비슷한 sparsity pattern을 가져야 한다고 설명한다.</p>
+<p>즉 값 자체보다는</p>
+<p>$$
+\rho(x) = 1[x &gt; 0]
+$$</p>
+<p>같은 activation boundary를 맞추는 것이다.</p>
+<hr>
+<h3 id="8-5-6-relational-information">8-5-6. Relational Information</h3>
+<p>마지막은 teacher와 student의 개별 output을 point-to-point로 맞추는 것이 아니라, <strong>관계</strong>를 맞추는 것이다.</p>
+<p>두 가지 관계가 나온다.</p>
+<p>첫 번째는 <strong>layer 간 관계</strong>다. Teacher의 여러 layer 사이 feature 변화 관계를 student도 비슷하게 가지도록 한다. 슬라이드에서는 FSP matrix를 이용해 layer 간 relational information을 추출한다고 설명한다.
+<img src="0610/image-39.png" alt="39"></p>
+<p>두 번째는 <strong>sample 간 관계</strong>다. 예를 들어 teacher가 sample 1, 2, 3을 feature space에서 어떤 거리 관계로 배치하는지를 student도 비슷하게 유지하도록 한다. 슬라이드에서도 Relational KD는 여러 input의 intermediate feature 사이 관계를 본다고 설명한다.
+<img src="0610/image-41.png" alt="41"></p>
+<p>즉 기존 KD가</p>
+<blockquote>
+<p>student output이 teacher output과 같은 위치로 가야 한다</p>
+</blockquote>
+<p>였다면, relational KD는</p>
+<blockquote>
+<p>sample들 사이의 상대적인 거리나 구조가 teacher와 비슷하면 된다</p>
+</blockquote>
+<p>에 가깝다.</p>
+<hr>
+<h2 id="8-6-kd%EC%9D%98-%EC%A2%85%EB%A5%98">8-6. KD의 종류</h2>
+<p>슬라이드 agenda에는 Self Distillation, Online Distillation, Combined Distillation이 나온다.</p>
+<p><strong>Vanilla KD</strong>는 이미 학습된 teacher가 있고, student가 그 teacher를 따라 배운다.</p>
+<p><strong>Self Distillation</strong>은 teacher와 student가 같은 모델이거나 같은 network 안에서 이루어진다. 예를 들어 깊은 layer의 출력을 shallow layer가 따라 배우게 할 수 있다.</p>
+<p><img src="0610/image-42.png" alt="42"></p>
+<p><strong>Online Distillation</strong>은 teacher가 미리 고정되어 있지 않고, 여러 student가 동시에 학습하면서 서로를 teacher처럼 활용하는 방식이다.</p>
+<p><img src="0610/image-43.png" alt="43"></p>
+<p><strong>Combined Distillation</strong>은 여러 distillation signal을 함께 쓰는 것이다. 예를 들어 output logits도 맞추고, feature map도 맞추고, attention map도 맞추는 식이다.</p>
+<p><img src="0610/image-44.png" alt="44"></p>
+<hr>
+<h2 id="8-7-%EC%A0%84%EC%B2%B4-loss%EB%8A%94-%EC%96%B4%EB%96%BB%EA%B2%8C-%EC%83%9D%EA%B8%B0%EB%82%98">8-7. 전체 loss는 어떻게 생기나?</h2>
+<p>가장 기본적인 KD loss는 이런 식으로 생각하면 된다.</p>
+<p>$$
+L =
+(1-\alpha)L_{CE}(y, p_s)
++ \alpha T^2 L_{KD}(p_t(T), p_s(T))
+$$</p>
+<p>여기서</p>
+<ul>
+<li>$L_{CE}$: student가 정답 label을 맞히는 loss</li>
+<li>$L_{KD}$: teacher와 student의 soft probability를 맞추는 loss</li>
+<li>$T$: temperature</li>
+<li>$\alpha$: 정답 loss와 distillation loss의 비율</li>
+</ul>
+<p>중간 feature까지 맞추면 여기에 항이 더 추가된다.</p>
+<p>$$
+L = L_{CE} + \lambda_1 L_{logit} + \lambda_2 L_{feature} + \lambda_3 L_{attention}
+$$</p>
+<p>결국 KD는 “teacher에게서 어떤 정보를 배울지 정하고, 그 정보를 loss로 추가하는 것”이라고 보면 된다.</p>
+<h2 id="8-8-distillation-for-different-tasks">8-8. Distillation for Different Tasks</h2>
+<p>“KD가 classification에만 쓰이는 게 아니라, task별로 맞춰야 하는 output/loss가 달라진다”는 내용이야. 슬라이드에서도 KD for Object Detection, Semantic Segmentation, GAN, Transformers, LLMs가 따로 나온다.</p>
+<h3 id="8-8-1-object-detection%EC%97%90%EC%84%9C%EC%9D%98-kd">8-8-1. Object Detection에서의 KD</h3>
+<p>Object detection은 단순 classification이 아니라,</p>
+<p>$$
+\text{Object Detection} = \text{Classification} + \text{Bounding Box Regression}
+$$</p>
+<p>이야.</p>
+<p>즉 “이 물체가 고양이냐?”뿐 아니라 “고양이가 어디에 있냐?”까지 맞춰야 한다.</p>
+<p><img src="0610/image-49.png" alt="49"></p>
+<p>그래서 teacher와 student를 맞출 때도 두 가지를 본다.</p>
+<p>첫째, class prediction을 맞춘다.
+둘째, bounding box prediction을 맞춘다.</p>
+<p>그런데 teacher와 student의 feature map shape이 다를 수 있으니까, 중간에 <strong>$1 \times 1$ convolution</strong>을 붙여서 shape을 맞춘다. 그리고 object detection은 background가 훨씬 많고 foreground object는 적기 때문에, foreground/background class imbalance를 고려해서 loss weight를 다르게 준다.</p>
+<p>또 슬라이드에 나오는 특이한 아이디어는 teacher prediction을 student가 도달해야 할 <strong>upper bound</strong>처럼 쓰는 것이다. Student가 teacher보다 못하면 loss를 주고, student가 teacher보다 좋아지면 더 이상 teacher를 따라가게 하지 않고 loss를 0으로 만든다.</p>
+<hr>
+<h3 id="8-8-2-semantic-segmentation%EC%97%90%EC%84%9C%EC%9D%98-kd">8-8-2. Semantic Segmentation에서의 KD</h3>
+<p>Semantic segmentation은 이미지 전체를 하나의 class로 분류하는 게 아니라, <strong>pixel마다 classification</strong>하는 문제야.</p>
+<p>즉 각 pixel에 대해</p>
+<p>$$
+\text{pixel} \rightarrow \text{class}
+$$</p>
+<p>를 예측한다.</p>
+<p>그래서 기본적으로는 classification KD와 비슷하지만, output이 이미지처럼 공간 구조를 가진다. 따라서 teacher와 student의 feature map을 맞추는 <strong>feature imitation</strong>을 쓸 수 있고, 더 나아가 segmentation map의 구조가 자연스러운지 보기 위해 <strong>discriminator network</strong>를 추가해서 adversarial loss를 줄 수도 있다.</p>
+<p>쉽게 말하면:</p>
+<blockquote>
+<p>teacher가 만든 segmentation map처럼 student도 pixel-level 구조를 잘 따라 하게 만든다.</p>
+</blockquote>
+<hr>
+<h3 id="8-8-3-gan%EC%97%90%EC%84%9C%EC%9D%98-kd">8-8-3. GAN에서의 KD</h3>
+<p>GAN에서는 teacher/student가 보통 <strong>generator</strong> 쪽에 적용된다고 보면 돼.</p>
+<p><img src="0610/image-48.png" alt="48"></p>
+<p>Teacher generator는 큰 모델이라 고품질 이미지를 만들고, student generator는 작은 모델이라 빠르지만 품질이 떨어질 수 있다. 그래서 student generator가 teacher generator의 출력을 따라 하도록 학습한다.</p>
+<p>GAN KD에서는 여러 loss가 같이 쓰인다.</p>
+<p>$$
+L = L_{distill} + L_{reconstruction} + L_{cGAN}
+$$</p>
+<p>각각 의미는 이렇다.</p>
+<ul>
+<li>
+<p>$L_{distill}$은 teacher generator와 student generator의 출력을 비슷하게 만드는 loss다.</p>
+</li>
+<li>
+<p>$L_{reconstruction}$은 생성 결과가 target image와 비슷해지도록 하는 loss다.</p>
+</li>
+<li>
+<p>$L_{cGAN}$은 GAN 원래의 adversarial loss로, discriminator를 속일 만큼 realistic한 이미지를 만들도록 하는 loss다.</p>
+</li>
+</ul>
+<p>즉 GAN에서는 단순히 label probability를 맞추는 게 아니라,</p>
+<blockquote>
+<p>teacher가 만드는 이미지 품질과 GAN의 realism을 동시에 따라가게 만든다.</p>
+</blockquote>
+<hr>
+<h3 id="8-8-4-transformer%EC%97%90%EC%84%9C%EC%9D%98-kd">8-8-4. Transformer에서의 KD</h3>
+<p>Transformer에서는 CNN의 attention transfer와 다르게, <strong>self-attention map</strong>을 맞추는 것이 중요하다.</p>
+<p>CNN attention은 보통 “이미지의 어느 공간 위치를 봤는가”에 가깝다.
+Transformer attention은 “어떤 token이 어떤 token을 얼마나 참고했는가”에 가깝다.</p>
+<p><img src="0610/image-47.png" alt="47"></p>
+<p>예를 들어 teacher의 attention matrix가</p>
+<p>$$
+A_t \in \mathbb{R}^{n \times n}
+$$</p>
+<p>이고 student의 attention matrix가</p>
+<p>$$
+A_s \in \mathbb{R}^{n \times n}
+$$</p>
+<p>라면, student가 teacher의 token-to-token attention pattern을 따라가도록 만든다.</p>
+<p>$$
+L_{attn} = |A_t - A_s|^2
+$$</p>
+<p>이런 느낌이야.</p>
+<p>슬라이드에서는 MobileBERT 같은 예시가 나오고, student model이 teacher model의 attention map을 mimic하도록 학습한다고 설명한다.</p>
+<hr>
+<h3 id="8-8-5-llm%EC%97%90%EC%84%9C%EC%9D%98-kd">8-8-5. LLM에서의 KD</h3>
+<p>LLM에서는 단순히 next token probability만 맞추는 것보다, <strong>reasoning trace</strong>를 distill하는 게 중요해진다.</p>
+<p><img src="0610/image-46.png" alt="46"></p>
+<p>즉 teacher LLM이 답만 주는 게 아니라,</p>
+<pre class="hljs"><code><div>문제 이해 → 중간 추론 → 답
+</div></code></pre>
+<p>같은 reasoning 과정을 보여주면, 작은 student LLM이 그 reasoning 과정을 따라 배우게 한다.</p>
+<p>이걸 <strong>Reasoning Distillation</strong>이라고 보면 돼.</p>
+<p>슬라이드에서는 teacher의 reasoning traces를 additional supervision으로 사용한다고 설명하고, 작은 Qwen/Gemma 모델들이 큰 모델의 trace로 학습되는 예시를 언급한다.</p>
+<p>최근 LLM KD에서는 세 가지가 중요하다고 나온다.</p>
+<p>첫째, <strong>무엇을 distill할 것인가</strong>
+예: 답만? reasoning trace? subquestion? code?</p>
+<p>둘째, <strong>distill할 데이터를 어떻게 refine할 것인가</strong>
+Teacher가 만든 답 중 좋은 것만 고르거나, 여러 reasoning path 중 좋은 것을 고른다.</p>
+<p>셋째, <strong>training objective를 어떻게 만들 것인가</strong>
+단순 SFT처럼 따라 쓰게 할지, preference/RL 계열 objective를 섞을지 정한다.</p>
+<p>슬라이드에서는 긴 reasoning trace 하나를 배우는 것보다 <strong>subquestion과 answer를 생성하는 방식</strong>이 더 좋을 수 있고, programmable reasoning에서는 자연어 CoT보다 <strong>code-based representation</strong>을 배우는 것이 더 좋을 수 있다고 설명한다.</p>
+<h2 id="8-9-network-augmentation">8-9. Network Augmentation</h2>
+<p>overfit 해결 방안들: data augmentation, dropout 등</p>
+<p>-&gt; 근데 이걸 작은 모델에 쓰면 오히려 성능이 악화될 수 있다</p>
+<p>-&gt; 그래서 Network Augmentation 을 쓴다</p>
+<p><img src="0610/image-45.png" alt="45"></p>
+<p><strong>Network Augmentation</strong>은 KD랑 비슷하게 “작은 모델 학습을 도와주는 방법”인데, teacher 모델의 output을 따라 하는 것보다는 <strong>학습할 때만 모델을 임시로 크게 만들어서 더 많은 supervision을 주는 방식</strong>이야.</p>
+<blockquote>
+<p>Tiny model은 capacity가 작아서 학습이 잘 안 되니까, training 중에만 auxiliary branch/module을 붙여서 더 풍부한 학습 신호를 주고, inference 때는 그걸 제거한다.</p>
+</blockquote>
+<p>즉 원래 tiny model이 있으면 학습 중에는 이렇게 만든다.</p>
+<p>$$
+\text{Tiny Model} + \text{Auxiliary Modules}
+$$</p>
+<p>그리고 loss도 main output에서만 주는 게 아니라, 중간 auxiliary output에도 준다.</p>
+<p>$$
+L = L_{base} + \lambda L_{aux}
+$$</p>
+<p>슬라이드에서도 tiny model을 위해 training 중 extra supervision을 얻도록 model을 augment한다고 설명한다.</p>
+<p>중요한 점은 <strong>inference 때는 auxiliary part를 버린다</strong>는 거야. 그래서 최종 deployed model은 여전히 작은 tiny model이다.</p>
+<p>그래서 KD와 비교하면:</p>
+<table>
+<thead>
+<tr>
+<th>구분</th>
+<th>Knowledge Distillation</th>
+<th>Network Augmentation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>도움 주는 방식</td>
+<td>큰 teacher의 예측/feature를 따라 함</td>
+<td>학습 중 임시 branch를 붙여 extra supervision</td>
+</tr>
+<tr>
+<td>필요 요소</td>
+<td>teacher model</td>
+<td>auxiliary modules</td>
+</tr>
+<tr>
+<td>inference 때</td>
+<td>student만 사용</td>
+<td>tiny base model만 사용</td>
+</tr>
+<tr>
+<td>목적</td>
+<td>teacher 지식 전달</td>
+<td>tiny model 학습 자체를 쉽게 만듦</td>
+</tr>
+</tbody>
+</table>
+<p>또 슬라이드에서는 NetAug가 tiny NN에서는 training accuracy와 validation accuracy를 모두 개선하지만, 큰 NN에서는 training accuracy는 올려도 validation accuracy를 해칠 수 있다고 설명한다. 즉 <strong>작은 모델 underfitting을 완화하는 데 특히 유용한 방법</strong>이라고 보면 돼.</p>
+<hr>
+<h2 id="8-10-%EC%8B%9C%ED%97%98%EA%B3%BC%EC%A0%9C-%EA%B4%80%EC%A0%90-%ED%95%B5%EC%8B%AC-%EC%A0%95%EB%A6%AC">8-10. 시험/과제 관점 핵심 정리</h2>
+<p>Lecture 8에서 제일 중요한 건 이거야.</p>
+<blockquote>
+<p>Knowledge Distillation은 큰 teacher model의 지식을 작은 student model에 전달하기 위해, 기존 classification loss에 distillation loss를 추가하는 방법이다.</p>
+</blockquote>
+<p>꼭 알아야 할 포인트는 다음이야.</p>
+<p>Teacher와 student의 <strong>output probability distribution</strong>을 맞추는 것이 가장 기본적인 KD다.</p>
+<p>Temperature $T$는 softmax 분포를 부드럽게 만들어 class 간 관계 정보를 더 잘 전달한다.</p>
+<p>KD에서 match할 수 있는 대상은 logits뿐만 아니라 intermediate features, hidden weights, gradients/attention maps, sparsity patterns, relational information까지 다양하다.</p>
+<p>Teacher와 student는 구조가 다를 수 있으므로, 중간 feature를 맞출 때는 projection, resize, linear transform이 필요할 수 있다.</p>
+<p>Relational KD는 각 sample의 output을 직접 맞추기보다, sample들 사이의 상대적 거리나 구조를 맞추는 방식이다.</p>
+<p>한 줄 요약하면:</p>
+<blockquote>
+<p>Lecture 8은 “작은 모델이 큰 모델을 따라 배우도록, teacher의 logits, feature, attention, sparsity, 관계 정보를 loss로 추가하는 방법”을 다루는 강의다.</p>
+</blockquote>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true
+    },
+    "HTML-CSS": { linebreaks: { automatic: true } }
+  });
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</body>
+</html>
