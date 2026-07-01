@@ -1,0 +1,114 @@
+1장
+
+Regular Expressions ? * + . 
+슬라이드에 있는 예시를 반영해서
+
+precision, recall,  contingency table 읽는 법
+f1 measure
+
+edit distance 는 개념도 있지만 계산하는 걸 직접 해봤기 때문에 어떻게 계산을 할지, distance가 뭐고 그때 path 가 어떻게 될까 9어떤 연산을 거쳐서 이렇게 될까
+
+2장
+
+단어를 쓰기 위해서는 normalization이 필요하다
+
+레마타이제이션이랑 스테밍의 차이
+레: 사전에 있는 원형으로 바꾸는 거고
+스: 기계적으로 룰베이스로 어미를 잘라내는 방식을 쓴다
+그래서 사전에 없는 단어가 스테밍의 결과로 나올 수 있다
+
+subword 
+byte-pair encoding: 예시도 있고 알고리즘도 있고 실습도 했었으니까 코드레벨에서도 어떻게 하는지를 알아야한다. learn & inference
+
+3장
+
+체인룰을 적용할 수 잇다
+그래서 개별저인 앤그램을 가지고 문장의 학률을 계산할 수 있다. 
+joint prob을 계산해서 word proab 를 계산할 수 이다
+markov asumption이 있어서 앤그램을 이렇게 사용할 수 있다
+왼쪽의 조건부확률을 사용해야하는데, 오른쪽의 것으로 바꾸는게 마르코프 어섬션을 하기 때문이다. (사람 그림 있는 페이지)
+어떻게 계산하는가. 계산하는 부분이 있으면 시험이 나오기 좋다. 
+undeflow를 피하기 위해 log를 해야한다는 얘기
+수업/실습에서 나왔던 얘기가 0이 하나라도 뜨면 문장의 ㅗ학률이 0이 되기 때문에 라플라스 스무딩(add one smooting)을 사용한다. 식이 이렇게 바뀐다.
+add-k 식도 이렇게 생겼다
+
+
+나이브 베이즈
+나이브 베이즈를 어떻게 하냐
+백오브워즈를 사용하기 때문에 순서랑은 관계가 없다
+백오브워즈랑 assumption이랑 다르다. 백오브워즈는 단어를 이렇게 만든다는 거고 assumtion은 데이터가 이렇게 생겼을 거라고? 예상/가정하는 거라서 다르다 . - 뒤에 슬라이드에 둘이 거의 같은거처럼 나온다고 무시하라고 함
+
+나이브베이즈 클래시파이어 theorem 이 어떻게 적용이 되는가? 모든 조건부 확률에 통하는 정리인데, 정확히 이 classifier에 어떻게 적용이 되는가
+식 나오는 부분을 보여주면서 말함
+Independence Assumption 인데, 
+conditional independence: 앞에 뭐가 나오든간에 앞뒤에 나오는 단어들이 관련이 없다. 단어들이 독립적으로 등장한다. 
+멀티노미얼은 바이노미얼로 열심히 한거니까 엄청 열심히 보진 않아도 된다.
+
+여기도 zero prob 문제가 있어서 앤그램처럼 라플라스 스무딩을 적용해줄 수 있다. 
+차이니스 도쿄 어찌구 레스토랑 예제도 문제로 나올 수 있다.
+
+
+
+4
+앞쪽은 3장 참고해서 보면 되고 CONFUSION MATRIX 가 ㅇ나오는데, 중요한 개념이다. 3class confusion matrix 에서 precision, recall 계산하는 법도
+macroaveraging 이랑 microaveraging 의 차이
+예제 나올 수 있다. 
+
+perplexity
+식이 있는데, 우리가 처음보는 test set 에서 sentence의 가장 높은 확률을 assign을 할 수록 perplexiy는 낮아진다. 그래서 새로운 랭귀지 ㅗ모델이 나오면 다운스트림 문제를 풀어서 어찌구 저찌구가 좋고 나쁘다 하지만 순수하게 language model은 단순하게 확률 어사인하는 함수로 봤을 땐 perplexity를 보게 된다. 그래서 그런 부분을 눈여겨 봐라ㅏ 이게 어떤 의미를 가지는가. 낮으면 좋은 모델이다.
+
+backoff and interpolation 도 언급이 되었었다
+n-gram 을 쓸 때 n이 너무 높으면 생기는 문제/낮으면 생기는 문제들이있는데, 각각이 뭔지랑 interpolation 을 어떻게 하는지도 식을 가지고 한다.
+
+우리가 모르는단어가 나타났을 때 <UNK> 을 사용한다. OOV 개념을 알아두면 유익하다.. ㅎㅎ.. 
+
+
+
+
+5. 
+카운트 베이스 모델의 단점:
+비슷한 단어들끼리 비슷한 의미를 가지는 걸 파악하지 못한다는 문제
+long-distance dependency를 확인할 수 없다. 
+
+
+그래서 CBOW를 했고: 근처에 있는 단어들을 가지고 중간에 있는 걸 맞ㅊ추는 거
+skip gram이라는 걸 했다: 중간에 있는ㄷ ㅏㄴ어들로 주변의 단어를 ㅁ자추는 것이 차이다
+
+word embedding이 무엇이나, 어떤 property가 있다. 
+
+RNN 의약점... - 은 안나올 거 같다.. (ML은 다른데서 배우니까)
+
+
+7. 
+dense embedding
+word간의 relation 이야기가 나오는데 이건 간단한 거니까 한번 읽으면 될 것 같다. 가끔 이런게 객관식이나 T/F 로 나오기도 한다
+단어의 의미를 사전이나 관게로 했는데, distributional semantics는 실제로 단어가 어떤 단어들이랑 같이 등장하는가를 통게적으로 구해서 해보자가 포인트이다 
+
+dense vector 는 sparse 와 dense와 차이를 보면 된다. sparse는 대부분이 0이고 length가 엄청 크다
+dense 는 대부분이 0 이 아닌 대신에 벡터가 짧다
+
+similarity는 dot product로 한다  
+word2vec은 단어 하나를 임베딩 벡터 하나로 맵핑 시켰는데, 그러다보면 context를 고려하지 못하는 문제가 생긴다 (단어 하나가 여러 의미를 가질떄) 그래서 elmo나 bert같은 애들으 ㄴcontext를 고려할 수 있다. 
+그리고 transformer나 multihead attention 은 다른 수업에서 나왔을 거 같아서 강조를 많이 하지 않았다.
+
+
+8. 
+sparse embedding
+term-document matix 실습 때 만들었었고 다큐먼트 하나가 컬럼이고, 각 엘리먼트가 각 단어가 몇 번 등장ㅎㅆ는지의 카운트이다. 
+웹서치에 대해서 옛날엔 boolean서치를 했었다. and or term을가지고 도서관에 큰 데이터를 써야했는데, 어떤 문제가 있었다 - feast or famine . 검색에 랭킹을 매기게 되면서 이런 문제가 없어졌다. 
+
+ranking을 하려면 0 / 1이 아니라 숫자가 있어야 하는데 이걸 어떻게 계산하느냐가 문제. query document가 얼마나 매칭되는지를 구해야하는데, 그걸 구하는 방법이 다양하다. 
+
+기본적으로는 doc을vector로 표현을 해서 그것의 cosine similariy 를 구하는게 솔루션이었다. 이걸 count base로 구했었다. 
+이거 말고도? bag-of-words를 사용했다. 순서를 구하지 않는다는 뜻. 그리고 tf-idf에 대해서 배웠다. td는 doc에서 단어가 몇번 나왔냐인데, 이것만 쓰지 않는데 relevance가 linear하게 증가하지 않기 때문이다. 
+그래서 log frequency weighting을 도입해서 tf값을 보정해서 사용한다. 
+document frequence는 idf를 계산하기 위한 것이다. 모든 문서에 자주 등장하는 단어는 도움이 되지 않으니까 
+one term query에는 idf가 영향이 없다
+best kown weigting scheme in informaton retrieval
+쿼리도 벡터로 표현할 수 있다. 
+euclidean이 아니라 cosine 유사도를 사용하는 이유
+
+
+
+
+
